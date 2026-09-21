@@ -1,10 +1,13 @@
 docker-shadowsocks
 ==================
 
-[![Build Libev](https://img.shields.io/github/actions/workflow/status/easypi/docker-shadowsocks-libev/build-libev.yaml?branch=master&label=build-libev)](https://hub.docker.com/r/easypi/shadowsocks-libev)
-[![Build Rust](https://img.shields.io/github/actions/workflow/status/easypi/docker-shadowsocks-libev/build-rust.yaml?branch=master&label=build-rust)](https://hub.docker.com/r/easypi/shadowsocks-rust)
-[![Stars Libev](https://img.shields.io/docker/stars/easypi/shadowsocks-libev?label=docker-stars-libev)](https://hub.docker.com/r/easypi/shadowsocks-libev)
-[![Stars Rust](https://img.shields.io/docker/stars/easypi/shadowsocks-rust?label=docker-stars-rust)](https://hub.docker.com/r/easypi/shadowsocks-rust)
+[![Build Libev](https://img.shields.io/github/actions/workflow/status/easypi/docker-shadowsocks-libev/build-libev.yaml?branch=master&label=build-libev&logo=github)](https://github.com/EasyPi/docker-shadowsocks)
+[![Build Rust](https://img.shields.io/github/actions/workflow/status/easypi/docker-shadowsocks-libev/build-rust.yaml?branch=master&label=build-rust&logo=github)](https://github.com/EasyPi/docker-shadowsocks)
+
+[![Stars Libev](https://img.shields.io/docker/stars/easypi/shadowsocks-libev?label=stars-libev&logo=docker)](https://hub.docker.com/r/easypi/shadowsocks-libev)
+[![Stars Rust](https://img.shields.io/docker/stars/easypi/shadowsocks-rust?label=stars-rust&logo=docker)](https://hub.docker.com/r/easypi/shadowsocks-rust)
+
+[![Alpine](https://img.shields.io/badge/alpine:3.24-shadowsocks-0D597F?logo=alpinelinux&logoColor=white)](https://alpinelinux.org/)
 
 > 我们中国人需要管的
 >> ——— [Jackie Chan](https://zh.wikipedia.org/wiki/%E6%88%90%E9%BE%8D#%E6%94%BF%E6%B2%BB%E7%AB%8B%E5%9C%BA)
