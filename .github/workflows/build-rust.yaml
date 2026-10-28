@@ -22,7 +22,7 @@ jobs:
       - name: Docker Build and Notify
         uses: vimagick/dockerfiles/.github/actions/docker-build-notify@master
         with:
-          platforms: 'linux/amd64,linux/arm64,linux/arm/v7'
+          platforms: 'linux/amd64,linux/arm64'
           context: 'rust'
           image_name: 'easypi/shadowsocks-rust'
           version_arg: 'SS_RUST_VERSION'

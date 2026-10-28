@@ -4,10 +4,19 @@ docker-shadowsocks
 [![Build Libev](https://img.shields.io/github/actions/workflow/status/easypi/docker-shadowsocks-libev/build-libev.yaml?branch=master&label=build-libev&logo=github)](https://github.com/EasyPi/docker-shadowsocks)
 [![Build Rust](https://img.shields.io/github/actions/workflow/status/easypi/docker-shadowsocks-libev/build-rust.yaml?branch=master&label=build-rust&logo=github)](https://github.com/EasyPi/docker-shadowsocks)
 
-[![Stars Libev](https://img.shields.io/docker/stars/easypi/shadowsocks-libev?label=stars-libev&logo=docker)](https://hub.docker.com/r/easypi/shadowsocks-libev)
-[![Stars Rust](https://img.shields.io/docker/stars/easypi/shadowsocks-rust?label=stars-rust&logo=docker)](https://hub.docker.com/r/easypi/shadowsocks-rust)
+[![][10]][11]
+[![][12]][13]
 
-[![Alpine](https://img.shields.io/badge/alpine:3.24-shadowsocks-0D597F?logo=alpinelinux&logoColor=white)](https://alpinelinux.org/)
+![][14]
+[![Alpine][15]](https://alpinelinux.org/)
+
+[10]: https://img.shields.io/docker/v/easypi/shadowsocks-libev/latest?label=easypi/shadowsocks-libev&logo=docker&style=flat-square
+[11]: https://hub.docker.com/r/easypi/shadowsocks-libev
+[12]: https://img.shields.io/docker/v/easypi/shadowsocks-rust/latest?label=easypi/shadowsocks-rust&logo=docker&style=flat-square
+[13]: https://hub.docker.com/r/easypi/shadowsocks-rust
+[14]: https://img.shields.io/badge/linux-amd64+arm64-orange.svg?logo=linux&style=flat-square
+[15]: https://img.shields.io/badge/3.24-0D597F?label=alpine&logo=alpinelinux&logoColor=white
+
 
 > 我们中国人需要管的
 >> ——— [Jackie Chan](https://zh.wikipedia.org/wiki/%E6%88%90%E9%BE%8D#%E6%94%BF%E6%B2%BB%E7%AB%8B%E5%9C%BA)
@@ -23,7 +32,7 @@ and low-end boxes.
 It is a port of [Shadowsocks][2] created by [@clowwindy][3], which is maintained by
 [@madeye][4] and [@linusyang][5].
 
-Current version: [![release](https://img.shields.io/github/release/shadowsocks/shadowsocks-libev.svg)][6]
+Current version: [![release](https://img.shields.io/github/release/shadowsocks/shadowsocks-libev.svg?label=shadowsocks-libev)][6]
 
 > [!IMPORTANT]
 > Future development moved to shadowsocks-rust
@@ -32,7 +41,7 @@ Current version: [![release](https://img.shields.io/github/release/shadowsocks/s
 
 [Shadowsocks-rust][13] is a Rust port of shadowsocks.
 
-Current version: [![release](https://img.shields.io/github/release/shadowsocks/shadowsocks-rust.svg)][14]
+Current version: [![release](https://img.shields.io/github/release/shadowsocks/shadowsocks-rust.svg?label=shadowsocks-rust)][14]
 
 ## How to use these images
 
