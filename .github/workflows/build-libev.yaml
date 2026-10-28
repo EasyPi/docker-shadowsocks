@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - libev/Dockerfile
+      - .github/workflows/build-libev.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
