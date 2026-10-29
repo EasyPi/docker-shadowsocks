@@ -7,15 +7,24 @@ MAINTAINER EasyPi Software Foundation
 
 ARG TARGETPLATFORM
 ARG SS_RUST_VERSION
+ARG V2RAY_PLUGIN_VERSION
 
 RUN set -ex \
+    && apk add --no-cache curl \
+    && echo "=== shadowsocks-rust ===" \
     && SS_RUST_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/amd64@x86_64-unknown-linux-musl@' \
-                                                 -e 's@linux/arm64@aarch64-unknown-linux-musl@' \
-                                                 -e 's@linux/arm/v7@armv7-unknown-linux-musleabihf@') \
+                                                 -e 's@linux/arm64@aarch64-unknown-linux-musl@') \
     && SS_RUST_FILE=shadowsocks-v${SS_RUST_VERSION}.${SS_RUST_ARCH}.tar.xz \
     && SS_RUST_URL=https://github.com/shadowsocks/shadowsocks-rust/releases/download/v${SS_RUST_VERSION}/${SS_RUST_FILE} \
-    && apk add --no-cache curl \
-    && curl -sSL ${SS_RUST_URL} | tar xJ ssservice -C /usr/bin/ \
+    && curl -sSL ${SS_RUST_URL} | tar xvJ ssserver -C /usr/bin/ \
+    && ssserver --version \
+    && echo "=== v2ray-plugin ===" \
+    && V2RAY_PLUGIN_ARCH=$(echo $TARGETPLATFORM | sed -e 's@/@-@') \
+    && V2RAY_PLUGIN_FILE=v2ray-plugin-${V2RAY_PLUGIN_ARCH}-v${V2RAY_PLUGIN_VERSION}.tar.gz \
+    && V2RAY_PLUGIN_URL=https://github.com/shadowsocks/v2ray-plugin/releases/download/v${V2RAY_PLUGIN_VERSION}/${V2RAY_PLUGIN_FILE} \
+    && curl -sSL ${V2RAY_PLUGIN_URL} | tar xvz --wildcards 'v2ray-plugin_*' \
+    && mv v2ray-plugin_* /usr/bin/v2ray-plugin \
+    && v2ray-plugin -version \
     && apk del curl
 
 ENV SERVER_ADDR=0.0.0.0
@@ -37,4 +46,3 @@ CMD ssservice server -s "$SERVER_ADDR:$SERVER_PORT" \
                      --worker-threads "$WORKERS"    \
                      --tcp-fast-open --tcp-no-delay \
                      -U
-

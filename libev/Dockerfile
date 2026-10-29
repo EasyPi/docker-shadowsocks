@@ -5,11 +5,13 @@
 FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
-ARG SS_VERSION=3.3.6
-ARG SS_URL=https://github.com/shadowsocks/shadowsocks-c/archive/v${SS_VERSION}.tar.gz
-ARG SS_DIR=shadowsocks-c-${SS_VERSION}
+ARG TARGETPLATFORM
+ARG SS_LIBEV_VERSION
+ARG V2RAY_PLUGIN_VERSION
 
 RUN set -ex \
+    && SS_URL=https://github.com/shadowsocks/shadowsocks-c/archive/v${SS_LIBEV_VERSION}.tar.gz \
+    && SS_DIR=shadowsocks-c-${SS_LIBEV_VERSION} \
     && apk add --no-cache c-ares \
                           libcrypto3 \
                           libev \
@@ -33,7 +35,8 @@ RUN set -ex \
                              pkgconfig \
                              tar \
     && curl -sSL $SS_URL | tar xz \
-    && cd $SS_DIR \
+    && echo "=== shadowsocks-libev ===" \
+        && cd $SS_DIR \
         && curl -sSL https://github.com/shadowsocks/ipset/archive/shadowsocks.tar.gz | tar xz --strip 1 -C libipset \
         && curl -sSL https://github.com/shadowsocks/libcork/archive/shadowsocks.tar.gz | tar xz --strip 1 -C libcork \
         && curl -sSL https://github.com/shadowsocks/libbloom/archive/master.tar.gz | tar xz --strip 1 -C libbloom \
@@ -49,6 +52,13 @@ RUN set -ex \
         && make install \
         && cd ../.. \
         && rm -rf $SS_DIR \
+    && echo "=== v2ray-plugin ===" \
+        && V2RAY_PLUGIN_ARCH=$(echo $TARGETPLATFORM | sed -e 's@/@-@') \
+        && V2RAY_PLUGIN_FILE=v2ray-plugin-${V2RAY_PLUGIN_ARCH}-v${V2RAY_PLUGIN_VERSION}.tar.gz \
+        && V2RAY_PLUGIN_URL=https://github.com/shadowsocks/v2ray-plugin/releases/download/v${V2RAY_PLUGIN_VERSION}/${V2RAY_PLUGIN_FILE} \
+        && curl -sSL ${V2RAY_PLUGIN_URL} | tar xvz --wildcards 'v2ray-plugin_*' \
+        && mv v2ray-plugin_* /usr/bin/v2ray-plugin \
+        && v2ray-plugin -version \
     && apk del TMP
 
 ENV SERVER_ADDR=0.0.0.0

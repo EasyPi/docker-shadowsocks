@@ -26,5 +26,7 @@ jobs:
           platforms: 'linux/amd64,linux/arm64'
           context: 'libev'
           image_name: 'easypi/shadowsocks-libev'
-          version_arg: 'SS_VERSION'
+          version_arg: 'SS_LIBEV_VERSION'
           version_value: '3.3.6'
+          other_build_args: |
+            V2RAY_PLUGIN_VERSION=1.5.0
