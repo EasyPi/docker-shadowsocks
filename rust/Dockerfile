@@ -10,13 +10,14 @@ ARG SS_RUST_VERSION
 ARG V2RAY_PLUGIN_VERSION
 
 RUN set -ex \
-    && apk add --no-cache curl tar \
+    && apk add --no-cache curl tar xz \
     && echo "=== shadowsocks-rust ===" \
     && SS_RUST_ARCH=$(echo $TARGETPLATFORM | sed -e 's@linux/amd64@x86_64-unknown-linux-musl@' \
                                                  -e 's@linux/arm64@aarch64-unknown-linux-musl@') \
     && SS_RUST_FILE=shadowsocks-v${SS_RUST_VERSION}.${SS_RUST_ARCH}.tar.xz \
     && SS_RUST_URL=https://github.com/shadowsocks/shadowsocks-rust/releases/download/v${SS_RUST_VERSION}/${SS_RUST_FILE} \
-    && curl -sSL ${SS_RUST_URL} | tar xvJ ssserver -C /usr/bin/ \
+    && curl -sSL ${SS_RUST_URL} | tar xvJ ssserver \
+    && mv ssserver /usr/bin/ssserver \
     && ssserver --version \
     && echo "=== v2ray-plugin ===" \
     && V2RAY_PLUGIN_ARCH=$(echo $TARGETPLATFORM | sed -e 's@/@-@') \
@@ -25,7 +26,7 @@ RUN set -ex \
     && curl -sSL ${V2RAY_PLUGIN_URL} | tar xvz --wildcards 'v2ray-plugin_*' \
     && mv v2ray-plugin_* /usr/bin/v2ray-plugin \
     && v2ray-plugin -version \
-    && apk del curl tar
+    && apk del curl tar xz
 
 ENV SERVER_ADDR=0.0.0.0
 ENV SERVER_PORT=8388
