@@ -1,9 +1,11 @@
 {
   "server": "0.0.0.0",
-  "server_port": 8388,
-  "password": "5ouMnqPyzseL",
+  "server_port": 443,
+  "password": "weeGh7ooKiep",
   "timeout": 60,
   "method": "chacha20-ietf-poly1305",
   "dns_ipv6": false,
-  "mode": "tcp_and_udp"
+  "mode": "tcp_only",
+  "plugin": "/usr/bin/v2ray-plugin",
+  "plugin_opts": "server;tls;host=example.com;path=/ss;cert=/data/fullchain.pem;key=/data/privkey.pem"
 }
