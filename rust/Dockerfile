@@ -16,9 +16,9 @@ RUN set -ex \
                                                  -e 's@linux/arm64@aarch64-unknown-linux-musl@') \
     && SS_RUST_FILE=shadowsocks-v${SS_RUST_VERSION}.${SS_RUST_ARCH}.tar.xz \
     && SS_RUST_URL=https://github.com/shadowsocks/shadowsocks-rust/releases/download/v${SS_RUST_VERSION}/${SS_RUST_FILE} \
-    && curl -sSL ${SS_RUST_URL} | tar xvJ ssserver \
-    && mv ssserver /usr/bin/ssserver \
-    && ssserver --version \
+    && curl -sSL ${SS_RUST_URL} | tar xvJ ssservice \
+    && mv ssservice /usr/bin/ssservice \
+    && ssservice --version \
     && echo "=== v2ray-plugin ===" \
     && V2RAY_PLUGIN_ARCH=$(echo $TARGETPLATFORM | sed -e 's@/@-@') \
     && V2RAY_PLUGIN_FILE=v2ray-plugin-${V2RAY_PLUGIN_ARCH}-v${V2RAY_PLUGIN_VERSION}.tar.gz \
